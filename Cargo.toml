@@ -1,0 +1,8 @@
+[package]
+name = "libraw"
+version = "0.1.0"
+authors = ["David Cuddeback <david.cuddeback@gmail.com>"]
+
+[dependencies]
+libc = "0.1"
+libraw-sys = "0.1"
