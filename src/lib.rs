@@ -3,7 +3,7 @@ extern crate libc;
 
 pub use camera::{Cameras,camera_list};
 pub use error::{Error,Result};
-pub use image::{Image};
+pub use image::{Image,PixelType,Pixmap,Pixels,Pixel};
 pub use version::{Version,version};
 
 mod camera;
