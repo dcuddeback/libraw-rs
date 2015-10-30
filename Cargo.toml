@@ -2,6 +2,12 @@
 name = "libraw"
 version = "0.1.0"
 authors = ["David Cuddeback <david.cuddeback@gmail.com>"]
+description = "Rust wrapper for libraw"
+homepage = "https://github.com/dcuddeback/libraw-rs"
+repository = "https://github.com/dcuddeback/libraw-rs"
+license = "MIT"
+readme = "README.md"
+keywords = ["libraw", "raw", "camera", "image"]
 
 [dependencies]
 libc = "0.1"
