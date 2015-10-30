@@ -2,6 +2,8 @@
 
 The `libraw` crate provides a safe wrapper around the native `libraw` library.
 
+* [Documentation](http://dcuddeback.github.io/libraw-rs/libraw/)
+
 ## Dependencies
 In order to use the `libraw` crate, you must have the `libraw_r` library installed where it can be
 found by `pkg-config`. `libraw_r` is the reentrant version of LibRaw. Linking against the non
