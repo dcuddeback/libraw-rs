@@ -1,0 +1,1 @@
+initSidebarItems({"enum":[["PixelType","Types of raw pixel data."]],"struct":[["Image","A raw image."],["Pixel","A reference to a pixel in a pixmap."],["Pixels","Iterates over pixels in a pixmap."],["Pixmap","Maps pixel data onto a two-dimensional grid."]]});

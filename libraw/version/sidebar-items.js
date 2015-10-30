@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["version","Returns the version of the LibRaw library."]],"struct":[["Version","LibRaw library version."]]});

@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Error","The error type for libraw functions."]],"type":[["Result","Result type returned by libraw functions."]]});

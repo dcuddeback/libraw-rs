@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Image` struct in crate `libraw`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Image">
+
+    <title>libraw::Image - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>libraw</a></p><script>window.sidebarCurrent = {name: 'Image', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content struct">
+<h1 class='fqn'><span class='in-band'>Struct <a href='index.html'>libraw</a>::<wbr><a class='struct' href=''>Image</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-103' class='srclink' href='../src/libraw/image.rs.html#20-22' title='goto source code'>[src]</a></span></h1>
+<pre class='rust struct'>pub struct Image {
+    // some fields omitted
+}</pre><div class='docblock'><p>A raw image.</p>
+</div><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl <a class='struct' href='../libraw/struct.Image.html' title='libraw::Image'>Image</a></code></h3><div class='impl-items'><h4 id='method.open' class='method'><code>fn <a href='#method.open' class='fnname'>open</a>(path: &amp;<a class='struct' href='https://doc.rust-lang.org/nightly/std/path/struct.Path.html' title='std::path::Path'>Path</a>) -&gt; <a class='type' href='../libraw/type.Result.html' title='libraw::Result'>Result</a>&lt;<a class='struct' href='../libraw/struct.Image.html' title='libraw::Image'>Image</a>&gt;</code></h4>
+<div class='docblock'><p>Opens the raw image file at the specified path.</p>
+</div><h4 id='method.unpack' class='method'><code>fn <a href='#method.unpack' class='fnname'>unpack</a>(&amp;mut self) -&gt; <a class='type' href='../libraw/type.Result.html' title='libraw::Result'>Result</a>&lt;<a href='https://doc.rust-lang.org/nightly/std/primitive.tuple.html'>()</a>&gt;</code></h4>
+<div class='docblock'><p>Unpacks the raw pixel data.</p>
+
+<p>The raw data must be unpacked before it can be accessed. After unpacking, the pixel type
+can be determined with <code>raw_pixel_type()</code>, and the pixel data can be accessed with
+<code>raw_pixmap()</code>, <code>color3_pixmap()</code>, or <code>color4_pixmap()</code>.</p>
+</div><h4 id='method.raw_pixel_type' class='method'><code>fn <a href='#method.raw_pixel_type' class='fnname'>raw_pixel_type</a>(&amp;self) -&gt; <a class='type' href='../libraw/type.Result.html' title='libraw::Result'>Result</a>&lt;<a class='enum' href='../libraw/enum.PixelType.html' title='libraw::PixelType'>PixelType</a>&gt;</code></h4>
+<div class='docblock'><p>Returns the pixel type of the raw data.</p>
+
+<p>The data must be unpacked before determining the pixel type. The value returned from this
+method determines which of the raw pixmap types is available.</p>
+
+<ul>
+<li><code>PixelType::Raw</code> means that <code>raw_pixmap()</code> is available.</li>
+<li><code>PixelType::Color3</code> means that <code>colro3_pixmap()</code> is available.</li>
+<li><code>PixelType::Color4</code> means that <code>colro4_pixmap()</code> is available.</li>
+</ul>
+
+<h2 id='errors' class='section-header'><a href='#errors'>Errors</a></h2>
+<p>This method returns an error if the pixel data has not been unpacked.</p>
+</div><h4 id='method.raw_pixmap' class='method'><code>fn <a href='#method.raw_pixmap' class='fnname'>raw_pixmap</a>(&amp;self) -&gt; <a class='type' href='../libraw/type.Result.html' title='libraw::Result'>Result</a>&lt;<a class='struct' href='../libraw/struct.Pixmap.html' title='libraw::Pixmap'>Pixmap</a>&lt;RawPixel&gt;&gt;</code></h4>
+<div class='docblock'><p>Returns a pixmap of the raw pixels.</p>
+
+<h2 id='errors' class='section-header'><a href='#errors'>Errors</a></h2>
+<p>This method returns an error if the pixel data has not been unpacked or if the raw pixel
+data is in a different format (see <code>raw_pixel_type()</code>).</p>
+</div><h4 id='method.color3_pixmap' class='method'><code>fn <a href='#method.color3_pixmap' class='fnname'>color3_pixmap</a>(&amp;self) -&gt; <a class='type' href='../libraw/type.Result.html' title='libraw::Result'>Result</a>&lt;<a class='struct' href='../libraw/struct.Pixmap.html' title='libraw::Pixmap'>Pixmap</a>&lt;Color3Pixel&gt;&gt;</code></h4>
+<div class='docblock'><p>Returns a pixmap of the raw 3-color pixels.</p>
+
+<h2 id='errors' class='section-header'><a href='#errors'>Errors</a></h2>
+<p>This method returns an error if the pixel data has not been unpacked or if the raw pixel
+data is in a different format (see <code>raw_pixel_type()</code>).</p>
+</div><h4 id='method.color4_pixmap' class='method'><code>fn <a href='#method.color4_pixmap' class='fnname'>color4_pixmap</a>(&amp;self) -&gt; <a class='type' href='../libraw/type.Result.html' title='libraw::Result'>Result</a>&lt;<a class='struct' href='../libraw/struct.Pixmap.html' title='libraw::Pixmap'>Pixmap</a>&lt;Color4Pixel&gt;&gt;</code></h4>
+<div class='docblock'><p>Returns a pixmap of the raw 4-color pixels.</p>
+
+<h2 id='errors' class='section-header'><a href='#errors'>Errors</a></h2>
+<p>This method returns an error if the pixel data has not been unpacked or if the raw pixel
+data is in a different format (see <code>raw_pixel_type()</code>).</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html' title='core::ops::Drop'>Drop</a> for <a class='struct' href='../libraw/struct.Image.html' title='libraw::Image'>Image</a></code></h3><div class='impl-items'><h4 id='method.drop' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/ops/trait.Drop.html#method.drop' class='fnname'>drop</a>(&amp;mut self)</code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "libraw";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script async src="../search-index.js"></script>
+</body>
+</html>
