@@ -1,0 +1,41 @@
+sudo: false
+
+language: rust
+rust:
+  - stable
+  - beta
+  - nightly
+
+env:
+  global:
+    - PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
+    - LD_LIBRARY_PATH=$HOME/local/lib:$LD_LIBRARY_PATH
+  matrix:
+    - LIBRAW_VERSION=0.17.0
+
+matrix:
+  allow_failures:
+    - rust: nightly
+  include:
+    - rust: stable
+      env: LIBRAW_VERSION=0.16.2
+    - rust: stable
+      env: LIBRAW_VERSION=0.16.0
+    - rust: stable
+      env: LIBRAW_VERSION=0.15.4
+    - rust: stable
+      env: LIBRAW_VERSION=0.15.0
+    - rust: nightly
+      env: LIBRAW_VERSION=master
+
+addons:
+  apt:
+    packages:
+      - build-essential
+
+before_install:
+  - git clone https://github.com/LibRaw/LibRaw.git
+  - cd LibRaw && git checkout $LIBRAW_VERSION && ./mkdist.sh && ./configure --prefix=$HOME/local && make && make install
+  - pkg-config --list-all
+  - pkg-config --libs libraw_r
+  - pkg-config --modversion libraw_r
