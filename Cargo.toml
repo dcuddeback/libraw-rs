@@ -11,5 +11,5 @@ readme = "README.md"
 keywords = ["libraw", "raw", "camera", "image"]
 
 [dependencies]
-libc = "0.1"
-libraw-sys = "0.1"
+libc = "0.2"
+libraw-sys = "0.1.1"
