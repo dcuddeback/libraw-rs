@@ -84,8 +84,8 @@ impl Image {
     /// method determines which of the raw pixmap types is available.
     ///
     /// * `PixelType::Raw` means that `raw_pixmap()` is available.
-    /// * `PixelType::Color3` means that `colro3_pixmap()` is available.
-    /// * `PixelType::Color4` means that `colro4_pixmap()` is available.
+    /// * `PixelType::Color3` means that `color3_pixmap()` is available.
+    /// * `PixelType::Color4` means that `color4_pixmap()` is available.
     ///
     /// ## Errors
     ///
