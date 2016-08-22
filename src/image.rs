@@ -302,7 +302,7 @@ impl<'a, T> Pixel<'a, T> where T: Clone + 'static {
             let pixel: usize = mem::transmute(self.pixel);
             let start: usize = mem::transmute(self.pixmap.pixels.as_ptr());
 
-            pixel - start
+            (pixel - start) / mem::size_of::<T>()
         }
     }
 }
