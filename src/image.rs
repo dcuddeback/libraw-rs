@@ -44,8 +44,8 @@ impl Image {
     }
 
     /// Opens the raw image file at the specified path.
-    pub fn open(path: &Path) -> ::Result<Image> {
-        let filename = match CString::new(path.as_os_str().as_bytes()) {
+    pub fn open<T: AsRef<Path>>(path: T) -> ::Result<Image> {
+        let filename = match CString::new(path.as_ref().as_os_str().as_bytes()) {
             Ok(s) => s,
             Err(_) => return Err(::error::from_raw_os_error(EINVAL))
         };
